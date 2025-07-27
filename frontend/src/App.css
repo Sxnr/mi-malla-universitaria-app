@@ -1,74 +1,223 @@
 
+/* Variables CSS para una paleta de colores */
+:root {
+  --primary-color: #4CAF50; /* Verde vibrante */
+  --primary-dark: #388E3C;
+  --secondary-color: #2196F3; /* Azul */
+  --background-light: #f4f7f6; /* Blanco roto */
+  --text-dark: #333;
+  --text-light: #f8f8f8;
+  --card-background: #ffffff;
+  --border-color: #e0e0e0;
+  --shadow-light: rgba(0, 0, 0, 0.08);
+  --error-color: #f44336;
+}
+
+/* Base y tipografía */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--background-light);
+  color: var(--text-dark);
+  line-height: 1.6;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
 .App {
-  text-align: center;
-  font-family: Arial, sans-serif;
-}
-
-.App-header {
-  background-color: #282c34;
-  padding: 20px;
-  color: white;
-}
-
-main {
-  padding: 20px;
-  max-width: 800px;
-  margin: 20px auto;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-section {
-  margin-bottom: 30px;
-  padding: 15px;
-  border: 1px solid #eee;
-  border-radius: 5px;
-}
-
-form {
   display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  justify-content: center;
-  margin-bottom: 20px;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
-form input, form select, form button {
-  padding: 8px 12px;
-  border-radius: 4px;
-  border: 1px solid #ccc;
-  font-size: 1em;
+/* Header */
+.App-header {
+  background-color: var(--primary-color);
+  color: var(--text-light);
+  padding: 2rem 1rem;
+  text-align: center;
+  box-shadow: 0 4px 6px var(--shadow-light);
 }
 
-form button {
-  background-color: #61dafb;
-  color: #282c34;
-  cursor: pointer;
-  border: none;
+.App-header h1 {
+  margin: 0;
+  font-size: 2.5rem;
+  letter-spacing: 1px;
+}
+
+/* Main Content Layout */
+main {
+  flex-grow: 1; /* Permite que el contenido principal ocupe el espacio restante */
+  padding: 2rem;
+  display: grid;
+  grid-template-columns: 1fr; /* Una columna por defecto */
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 2rem auto; /* Centrar y añadir espacio */
+}
+
+@media (min-width: 768px) {
+  main {
+    grid-template-columns: 1fr 1fr; /* Dos columnas en pantallas grandes */
+  }
+}
+
+/* Section Styling */
+section {
+  background-color: var(--card-background);
+  border-radius: 10px;
+  box-shadow: 0 4px 10px var(--shadow-light);
+  padding: 2rem;
+  border: 1px solid var(--border-color);
+}
+
+section h2 {
+  color: var(--primary-dark);
+  margin-top: 0;
+  font-size: 1.8rem;
+  border-bottom: 2px solid var(--border-color);
+  padding-bottom: 0.8rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Form Styling */
+.form-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 2rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
   font-weight: bold;
+  margin-bottom: 5px;
+  color: var(--text-dark);
 }
 
-form button:hover {
-  background-color: #21a1f1;
+.form-group input,
+.form-group select {
+  padding: 12px;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  font-size: 1rem;
+  width: calc(100% - 24px); /* Ajuste para el padding */
+  box-sizing: border-box; /* Incluye padding en el width */
+  transition: border-color 0.3s ease;
 }
 
-ul {
+.form-group input:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.2);
+}
+
+button {
+  background-color: var(--primary-color);
+  color: var(--text-light);
+  padding: 12px 20px;
+  border: none;
+  border-radius: 6px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  align-self: flex-start; /* Para alinear el botón si el form-container es flex-column */
+}
+
+button:hover {
+  background-color: var(--primary-dark);
+  transform: translateY(-2px);
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+/* List Styling */
+.list-container ul {
   list-style: none;
   padding: 0;
+  display: grid;
+  gap: 15px;
 }
 
-li {
-  background-color: #f9f9f9;
-  margin: 8px 0;
-  padding: 10px;
+.list-item {
+  background-color: var(--background-light);
+  padding: 1rem;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 2px 4px var(--shadow-light);
+  transition: transform 0.2s ease;
+}
+
+.list-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 8px var(--shadow-light);
+}
+
+.list-item h4 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  color: var(--secondary-color);
+  font-size: 1.2rem;
+}
+
+.list-item p {
+  margin: 0.2rem 0;
+  font-size: 0.95rem;
+}
+
+.list-item .status-tag {
+  display: inline-block;
+  background-color: var(--primary-color);
+  color: var(--text-light);
+  padding: 4px 8px;
   border-radius: 4px;
-  text-align: left;
+  font-size: 0.8em;
+  font-weight: bold;
+  margin-top: 0.5rem;
 }
 
-hr {
-  border: 0;
-  height: 1px;
-  background: #ccc;
-  margin: 40px 0;
+.list-item .actions {
+  margin-top: 1rem;
+  display: flex;
+  gap: 10px;
+}
+
+.list-item .actions button {
+  padding: 8px 12px;
+  font-size: 0.9rem;
+  background-color: var(--secondary-color);
+}
+
+.list-item .actions button.delete-btn {
+  background-color: var(--error-color);
+}
+
+.list-item .actions button:hover {
+  opacity: 0.9;
+}
+
+/* Utility Classes */
+.text-center {
+  text-align: center;
+}
+
+.mb-20 {
+  margin-bottom: 20px;
 }
