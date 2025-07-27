@@ -1,127 +1,128 @@
-
-/* Variables CSS para una paleta de colores */
-:root {
-  --primary-color: #4CAF50; /* Verde vibrante */
-  --primary-dark: #388E3C;
-  --secondary-color: #2196F3; /* Azul */
-  --background-light: #f4f7f6; /* Blanco roto */
-  --text-dark: #333;
-  --text-light: #f8f8f8;
-  --card-background: #ffffff;
-  --border-color: #e0e0e0;
-  --shadow-light: rgba(0, 0, 0, 0.08);
-  --error-color: #f44336;
-}
-
-/* Base y tipografía */
-body {
-  margin: 0;
-  font-family: 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  background-color: var(--background-light);
-  color: var(--text-dark);
-  line-height: 1.6;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
-
-.App {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-}
-
-/* Header */
-.App-header {
-  background-color: var(--primary-color);
+/* Nuevos estilos para la interfaz modular y botones de Home */
+/* Nuevo estilo para el encabezado de la página de inicio centrado */
+.home-header-content {
+  background-color: var(--primary-color); /* Usar el color primario de encabezado */
   color: var(--text-light);
   padding: 2rem 1rem;
   text-align: center;
-  box-shadow: 0 4px 6px var(--shadow-light);
+  border-radius: 10px; /* Bordes redondeados para que parezca una tarjeta */
+  box-shadow: 0 4px 10px var(--shadow-light);
+  margin-bottom: 2rem; /* Espacio entre el header y el resto del contenido */
 }
 
-.App-header h1 {
+.home-header-content h1 {
   margin: 0;
   font-size: 2.5rem;
   letter-spacing: 1px;
 }
 
-/* Main Content Layout */
-main {
-  flex-grow: 1; /* Permite que el contenido principal ocupe el espacio restante */
+.home-header-content p {
+  font-size: 1.2rem;
+  margin-top: 0.5rem;
+  opacity: 0.9;
+}
+
+/* Ajuste al main-content-single para las páginas de asignaturas/horarios */
+.main-content-single {
+  /* Mantén los estilos existentes */
+  flex-grow: 1;
   padding: 2rem;
   display: grid;
-  grid-template-columns: 1fr; /* Una columna por defecto */
+  grid-template-columns: 1fr;
   gap: 2rem;
-  max-width: 1200px;
-  margin: 2rem auto; /* Centrar y añadir espacio */
+  max-width: 1000px;
+  margin: 2rem auto;
 }
 
 @media (min-width: 768px) {
-  main {
-    grid-template-columns: 1fr 1fr; /* Dos columnas en pantallas grandes */
+  .main-content-single {
+    grid-template-columns: 1fr 1fr;
   }
 }
 
-/* Section Styling */
-section {
-  background-color: var(--card-background);
-  border-radius: 10px;
-  box-shadow: 0 4px 10px var(--shadow-light);
-  padding: 2rem;
-  border: 1px solid var(--border-color);
-}
-
-section h2 {
-  color: var(--primary-dark);
-  margin-top: 0;
-  font-size: 1.8rem;
-  border-bottom: 2px solid var(--border-color);
-  padding-bottom: 0.8rem;
-  margin-bottom: 1.5rem;
-}
-
-/* Form Styling */
-.form-container {
+/* Estilos para la página de inicio */
+.home-page {
   display: flex;
   flex-direction: column;
-  gap: 15px;
-  margin-bottom: 2rem;
-}
-
-.form-group {
-  display: flex;
-  flex-direction: column;
-}
-
-.form-group label {
-  font-weight: bold;
-  margin-bottom: 5px;
+  min-height: 100vh;
+  background-color: var(--background-light);
   color: var(--text-dark);
 }
 
-.form-group input,
-.form-group select {
-  padding: 12px;
-  border: 1px solid var(--border-color);
-  border-radius: 6px;
-  font-size: 1rem;
-  width: calc(100% - 24px); /* Ajuste para el padding */
-  box-sizing: border-box; /* Incluye padding en el width */
-  transition: border-color 0.3s ease;
+.home-main {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
 }
 
-.form-group input:focus,
-.form-group select:focus {
-  outline: none;
-  border-color: var(--primary-color);
-  box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.2);
+.home-section {
+  text-align: center;
+  max-width: 800px;
+  width: 100%;
+}
+
+.home-section h2 {
+  font-size: 2rem;
+  color: var(--primary-dark);
+  margin-bottom: 2.5rem;
+  border-bottom: none; /* Quitar borde del h2 general de section */
+}
+
+.button-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+@media (min-width: 600px) {
+  .button-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+}
+
+.home-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  background-color: var(--card-background);
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  box-shadow: 0 4px 8px var(--shadow-light);
+  text-decoration: none;
+  color: var(--text-dark);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.home-button:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px var(--shadow-light);
+  background-color: #fcfcfc;
+}
+
+.home-button span {
+  font-size: 3.5rem;
+  margin-bottom: 1rem;
+}
+
+.home-button p {
+  font-size: 0.9rem;
+  color: #666;
+  margin-top: 0.5rem;
+  text-align: center;
+}
+
+/* Estilos para las páginas específicas (AsignaturasPage, HorariosPage) */
+.page-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 button {
@@ -133,91 +134,217 @@ button {
   font-size: 1.1rem;
   font-weight: bold;
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-  align-self: flex-start; /* Para alinear el botón si el form-container es flex-column */
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease; /* Añadir box-shadow transition */
+  align-self: flex-start;
+  box-shadow: 0 2px 4px var(--shadow-light); /* Sombra para botones */
 }
 
 button:hover {
   background-color: var(--primary-dark);
   transform: translateY(-2px);
+  box-shadow: 0 4px 8px var(--shadow-light); /* Sombra más pronunciada en hover */
+}
+
+.home-button {
+  /* ... estilos existentes ... */
+  background-color: var(--card-background); /* Blanco para que destaquen sobre el fondo suave */
+  border: 1px solid var(--border-color);
+  box-shadow: 0 4px 8px var(--shadow-light);
+}
+
+.home-button:hover {
+  /* ... estilos existentes ... */
+  background-color: #f0fdfc; /* Ligeramente más oscuro en hover */
+  border-color: var(--primary-color); /* Borde primario en hover */
+}
+
+/* Estilo para el botón de editar y volver, usando secondary-color */
+.list-item .actions button.edit-btn,
+.back-button {
+  background-color: var(--secondary-color);
+}
+
+.list-item .actions button.edit-btn:hover,
+.back-button:hover {
+  background-color: var(--secondary-dark);
+}
+
+.page-header {
+  background-color: var(--primary-color);
+  color: var(--text-light);
+  padding: 1.5rem 1rem; /* Reducir un poco el padding vertical */
+  text-align: center;
+  box-shadow: 0 4px 6px var(--shadow-light);
+  display: flex; /* Usar flexbox */
+  flex-direction: column; /* Apilar elementos verticalmente */
+  align-items: center; /* Centrar horizontalmente */
+  gap: 10px; /* Espacio entre el título y el botón de volver */
+}
+
+.page-header h1 {
+  margin: 0;
+  font-size: 2.2rem;
+}
+
+.back-button {
+  /* Elimina: position: absolute; left: 20px; top: 50%; transform: translateY(-50%); */
+  background-color: var(--secondary-color);
+  color: var(--text-light);
+  padding: 8px 15px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: background-color 0.3s ease;
+  margin-top: 10px; /* Añadir un poco de margen superior */
+  display: inline-flex; /* Para alinear el texto y el icono si lo añades */
+  align-items: center;
+  gap: 5px;
+}
+
+.back-button:hover {
+  background-color: var(--secondary-dark);
+}
+
+button {
+  background-color: var(--primary-color);
+  color: var(--text-light);
+  padding: 12px 20px;
+  border: none;
+  border-radius: 6px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  align-self: flex-start;
+  box-shadow: 0 2px 4px var(--shadow-light);
+  display: inline-flex; /* Para íconos o texto y flecha */
+  align-items: center;
+  justify-content: center;
+  gap: 8px; /* Espacio entre texto e icono */
+}
+
+button:hover {
+  background-color: var(--primary-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px var(--shadow-light);
 }
 
 button:active {
   transform: translateY(0);
+  box-shadow: 0 1px 2px var(--shadow-light);
 }
 
-/* List Styling */
-.list-container ul {
-  list-style: none;
-  padding: 0;
+
+.main-content-single {
+  flex-grow: 1;
+  padding: 2rem;
   display: grid;
-  gap: 15px;
+  grid-template-columns: 1fr; /* Una columna en móvil */
+  gap: 2rem;
+  max-width: 1000px; /* Reducir un poco el ancho para las páginas de gestión */
+  margin: 2rem auto;
 }
 
-.list-item {
-  background-color: var(--background-light);
-  padding: 1rem;
-  border-radius: 8px;
-  border: 1px solid var(--border-color);
-  display: flex;
-  flex-direction: column;
-  box-shadow: 0 2px 4px var(--shadow-light);
-  transition: transform 0.2s ease;
+@media (min-width: 768px) {
+  .main-content-single {
+    grid-template-columns: 1fr 1fr; /* Dos columnas en desktop */
+  }
 }
 
-.list-item:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 4px 8px var(--shadow-light);
-}
-
-.list-item h4 {
-  margin-top: 0;
-  margin-bottom: 0.5rem;
-  color: var(--secondary-color);
-  font-size: 1.2rem;
-}
-
-.list-item p {
-  margin: 0.2rem 0;
-  font-size: 0.95rem;
-}
-
-.list-item .status-tag {
-  display: inline-block;
-  background-color: var(--primary-color);
-  color: var(--text-light);
-  padding: 4px 8px;
-  border-radius: 4px;
-  font-size: 0.8em;
-  font-weight: bold;
-  margin-top: 0.5rem;
-}
-
-.list-item .actions {
-  margin-top: 1rem;
-  display: flex;
-  gap: 10px;
-}
-
+/* Estilos para los botones de acción específicos (Editar, Eliminar, Cancelar) */
 .list-item .actions button {
   padding: 8px 12px;
   font-size: 0.9rem;
-  background-color: var(--secondary-color);
+  /* Eliminar background-color aquí para edit-btn y delete-btn para que sus propias clases lo definan */
+}
+
+.list-item .actions button.edit-btn {
+  background-color: var(--secondary-color); /* Azul para editar */
+}
+
+.list-item .actions button.edit-btn:hover {
+  background-color: var(--secondary-dark);
 }
 
 .list-item .actions button.delete-btn {
-  background-color: var(--error-color);
+  background-color: var(--error-color); /* Rojo para eliminar */
 }
 
-.list-item .actions button:hover {
-  opacity: 0.9;
+.list-item .actions button.delete-btn:hover {
+  background-color: #c82333; /* Rojo más oscuro */
 }
 
-/* Utility Classes */
-.text-center {
-  text-align: center;
+button.cancel-btn {
+    background-color: #6c757d; /* Gris para cancelar */
 }
 
-.mb-20 {
-  margin-bottom: 20px;
+button.cancel-btn:hover {
+    background-color: #5a6268;
+}
+
+/* Nuevos estilos para explicaciones en formularios */
+.form-group p.explanation {
+    font-size: 0.85em;
+    color: #666;
+    margin-top: 5px;
+    margin-bottom: 0;
+    line-height: 1.4;
+}
+
+/* Ajustes menores para formularios y listas dentro de secciones */
+section h2 {
+  font-size: 1.6rem;
+  margin-bottom: 1.2rem;
+}
+
+.form-group label {
+  font-size: 0.95rem;
+}
+
+.form-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+    justify-content: flex-end; /* Alinear botones a la derecha */
+}
+
+button.cancel-btn {
+    background-color: #6c757d; /* Gris para cancelar */
+}
+
+button.cancel-btn:hover {
+    background-color: #5a6268;
+}
+
+.list-item .actions button.edit-btn {
+  background-color: var(--secondary-color); /* Azul para editar */
+}
+
+.list-item .actions button.edit-btn:hover {
+  background-color: #1976D2;
+}
+
+/* Checkbox specific styling */
+.form-group.checkbox-group {
+    flex-direction: row; /* Para que el label esté al lado del checkbox */
+    align-items: center;
+    gap: 10px;
+}
+
+.form-group.checkbox-group label {
+    margin-bottom: 0;
+}
+
+:root {
+  --primary-color: #5cb85c; /* Un verde vibrante y amigable */
+  --primary-dark: #449d44;  /* Verde más oscuro para hover/active */
+  --secondary-color: #007bff; /* Un azul primario estándar */
+  --secondary-dark: #0056b3; /* Azul más oscuro */
+  --background-light: #e0f2f1; /* Verde menta muy claro, suave y relajante */
+  --card-background: #ffffff; /* Blanco puro para tarjetas, destaca sobre el fondo suave */
+  --text-dark: #333; /* Texto oscuro estándar */
+  --text-light: #f8f8f8; /* Texto claro para fondos oscuros */
+  --border-color: #c8e6c9; /* Borde que complementa el fondo verde claro */
+  --shadow-light: rgba(0, 0, 0, 0.1); /* Sombra suave */
+  --error-color: #dc3545; /* Rojo para errores/eliminar */
 }
