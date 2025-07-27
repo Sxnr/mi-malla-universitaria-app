@@ -348,3 +348,145 @@ button.cancel-btn:hover {
   --shadow-light: rgba(0, 0, 0, 0.1); /* Sombra suave */
   --error-color: #dc3545; /* Rojo para errores/eliminar */
 }
+
+.calendar-page-main {
+  flex-grow: 1;
+  padding: 2rem;
+  max-width: 1400px; /* Un poco más ancho para el calendario */
+  margin: 2rem auto;
+}
+
+.calendar-container {
+  background-color: var(--card-background);
+  border-radius: 10px;
+  box-shadow: 0 4px 10px var(--shadow-light);
+  padding: 2rem;
+  border: 1px solid var(--border-color);
+  overflow-x: auto; /* Para scroll horizontal en pantallas pequeñas */
+}
+
+.calendar-grid {
+  display: grid;
+  /* La plantilla de columnas se definirá dinámicamente en JS para incluir fines de semana */
+  grid-template-columns: 80px repeat(var(--num-days), 1fr); /* Horas + días */
+  grid-auto-rows: minmax(50px, auto); /* Altura mínima para cada slot de 30 minutos, o auto */
+  border: 1px solid var(--border-color);
+  border-bottom: none;
+  border-right: none;
+  position: relative;
+}
+
+.calendar-header-cell,
+.time-slot-label,
+.calendar-day-cell {
+  padding: 10px;
+  text-align: center;
+  font-weight: bold;
+  border-right: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+  background-color: var(--background-light);
+  position: sticky; /* Fija los encabezados */
+  top: 0;
+  z-index: 10;
+}
+
+.calendar-header-cell {
+  background-color: var(--primary-color);
+  color: var(--text-light);
+  font-size: 1.1em;
+}
+
+.time-slot-label {
+  background-color: var(--background-light);
+  color: var(--text-dark);
+  position: sticky;
+  left: 0;
+  z-index: 9;
+  text-align: right;
+  padding-right: 15px;
+}
+
+.calendar-day-column {
+  border-right: 1px solid var(--border-color);
+  position: relative; /* Para posicionar los eventos absolutos */
+}
+
+.calendar-cell {
+  border-right: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+  height: 25px; /* Altura para cada segmento de 30 min (ej., si la fila es 50px) */
+  box-sizing: border-box;
+}
+/* Líneas de hora para visualización */
+.calendar-cell:nth-child(odd) { /* Cada media hora */
+    border-bottom: 1px dashed var(--border-color);
+}
+.calendar-cell:nth-child(even) { /* Cada hora completa */
+    border-bottom: 1px solid var(--border-color);
+}
+
+
+.calendar-event {
+  background-color: var(--secondary-color);
+  color: var(--text-light);
+  border-radius: 5px;
+  padding: 5px 8px;
+  margin: 0 2px;
+  position: absolute; /* Posicionamiento absoluto dentro de la columna del día */
+  width: calc(100% - 4px); /* Ancho completo menos el margen */
+  box-sizing: border-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 0.85em;
+  line-height: 1.2;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  z-index: 5;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.calendar-event:hover {
+  background-color: var(--secondary-dark);
+}
+
+.calendar-event-details {
+  font-size: 0.75em;
+  opacity: 0.9;
+  margin-top: 3px;
+}
+
+/* Estilo para eventos tipo "Examen" o "Laboratorio" con color diferente */
+.calendar-event.type-Examen {
+    background-color: var(--error-color);
+}
+.calendar-event.type-Examen:hover {
+    background-color: #c82333;
+}
+
+.calendar-event.type-Laboratorio {
+    background-color: #ffc107; /* Amarillo */
+    color: var(--text-dark); /* Texto oscuro para el amarillo */
+}
+.calendar-event.type-Laboratorio:hover {
+    background-color: #e0a800;
+}
+
+/* Estilos responsivos para el calendario */
+@media (max-width: 768px) {
+    .calendar-container {
+        padding: 1rem;
+    }
+    .calendar-grid {
+        grid-template-columns: 60px repeat(var(--num-days), minmax(120px, 1fr)); /* Columnas más estrechas */
+    }
+    .time-slot-label,
+    .calendar-header-cell {
+        font-size: 0.9em;
+        padding: 5px;
+    }
+    .calendar-event {
+        font-size: 0.75em;
+        padding: 3px 5px;
+    }
+}

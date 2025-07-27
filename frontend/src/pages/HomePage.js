@@ -28,7 +28,11 @@ function HomePage() {
                             Gestionar Horarios
                             <p>Organiza tus clases, exámenes y eventos.</p>
                         </Link>
-                        {/* Puedes añadir más enlaces aquí en el futuro */}
+                        <Link to="/calendario" className="home-button"> {/* Nuevo botón */}
+                            <span role="img" aria-label="Calendar Icon">🗓️</span>
+                            Ver Calendario Semanal
+                            <p>Visualiza todos tus horarios en un calendario.</p>
+                        </Link>
                     </div>
                 </section>
             </main>
